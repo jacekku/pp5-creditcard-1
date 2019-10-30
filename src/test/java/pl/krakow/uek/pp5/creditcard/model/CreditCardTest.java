@@ -18,4 +18,17 @@ public class CreditCardTest {
         //Assert / Then
         Assert.assertTrue(card.getLimit().equals(BigDecimal.valueOf(LIMIT)));
     }
+    @Test
+    public void creditBelowGeneralLimitIsNotPossible() {
+        //Arrange
+        CreditCard card = new CreditCard("1234-5678");
+        //Act
+        //Assert
+        try {
+            card.assignLimit(BigDecimal.valueOf(50));
+            Assert.fail("exception");
+        } catch (CreditBelowLimitException e) {
+            Assert.assertTrue(true);
+        }
+    }
 }
