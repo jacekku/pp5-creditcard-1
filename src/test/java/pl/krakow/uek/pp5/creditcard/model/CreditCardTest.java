@@ -38,4 +38,14 @@ public class CreditCardTest {
         card.withdraw(BigDecimal.valueOf(500));
         Assert.assertEquals(BigDecimal.valueOf(500), card.getCurrentBalance());
     }
+
+
+    @Test(expected = NotEnoughMoneyException.class)
+    public void denyWithdrawBelowBalance() {
+        CreditCard card = new CreditCard("1234-5678");
+        card.assignLimit(BigDecimal.valueOf(1000));
+
+        card.withdraw(BigDecimal.valueOf(600));
+        card.withdraw(BigDecimal.valueOf(600));
+    }
 }
