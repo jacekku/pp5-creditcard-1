@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public class CreditCardTest {
 
-    public static final int LIMIT = 2000;
+    public static final int LIMIT = 10000;
 
     @Test
     public void itAllowAssignCreditToCard() {
