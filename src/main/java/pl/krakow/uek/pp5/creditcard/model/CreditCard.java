@@ -1,18 +1,16 @@
 package pl.krakow.uek.pp5.creditcard.model;
 
+import pl.krakow.uek.pp5.creditcard.model.exceptions.CreditBelowLimitException;
+import pl.krakow.uek.pp5.creditcard.model.exceptions.NotEnoughMoneyException;
+
 import java.math.BigDecimal;
 
 public class CreditCard {
     private final String cardNumber;
-    public BigDecimal getCurrentBalance() {
-
-        return balance;
-    }
     private BigDecimal cardLimit;
     private BigDecimal balance;
 
     public CreditCard(String cardNumber) {
-
         this.cardNumber = cardNumber;
     }
 
@@ -25,14 +23,18 @@ public class CreditCard {
     }
 
     public BigDecimal getLimit() {
-
         return cardLimit;
     }
 
     public void withdraw(BigDecimal money) {
-        if (balance.compareTo(money) == -1) {
+        if (balance.compareTo(money) == -1)  {
             throw new NotEnoughMoneyException();
         }
+
         balance = balance.subtract(money);
+    }
+
+    public BigDecimal getCurrentBalance() {
+        return balance;
     }
 }
