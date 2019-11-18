@@ -33,6 +33,9 @@ public class CreditCard {
 
         balance = balance.subtract(money);
     }
+    public void deposit(BigDecimal amount){
+        balance = balance.add(amount;)
+    }
 
     public BigDecimal getCurrentBalance() {
         return balance;
